@@ -1,0 +1,15 @@
+name,file_name,path,file_name_with_path,type
+e-tabm-158 ,"	e-tabm-158_clinical_updated.csv	",data/clinical/updated/,data/clinical/updated/e-tabm-158_clinical_updated.csv,clinical
+gse1456,gse1456_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse1456_clinical_updated.csv,clinical
+gse2034,gse2034_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse2034_clinical_updated.csv,clinical
+gse2990,gse2990_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse2990_clinical_updated.csv,clinical
+gse3494,gse3494_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse3494_clinical_updated.csv,clinical
+gse4922,gse4922_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse4922_clinical_updated.csv,clinical
+gse7390,gse7390_clinical_updated.csv,data/clinical/updated/,data/clinical/updated/gse7390_clinical_updated.csv,clinical
+e-tabm-158,e-tabm-158_series_matrix.csv,data/series_matrix/,data/series_matrix/e-tabm-158_series_matrix.csv,series_matrix
+gse1456,gse1456_series_matrix.csv,data/series_matrix/,data/series_matrix/gse1456_series_matrix.csv,series_matrix
+gse2034,gse2034_series_matrix.csv,data/series_matrix/,data/series_matrix/gse2034_series_matrix.csv,series_matrix
+gse2990,gse2990_series_matrix.csv,data/series_matrix/,data/series_matrix/gse2990_series_matrix.csv,series_matrix
+gse3494,gse3494_series_matrix.csv,data/series_matrix/,data/series_matrix/gse3494_series_matrix.csv,series_matrix
+gse4922,gse4922_series_matrix.csv,data/series_matrix/,data/series_matrix/gse4922_series_matrix.csv,series_matrix
+gse7390,gse7390_series_matrix.csv,data/series_matrix/,data/series_matrix/gse7390_series_matrix.csv,series_matrix

@@ -1,0 +1,14 @@
+from scipy import stats
+import numpy as np
+import pandas as pd
+import sys
+sys.path.append('../')
+from final_dataset.FinalDataSet import FinalDataSet
+
+class Normalize():
+    def __init__(self):
+        pass
+    
+    def get_normalized_data(self):
+        f = FinalDataSet()
+        return f.series_matrix
