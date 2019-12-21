@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import sys
 sys.path.append('../')
+import os
+sys.path.append(os.path.abspath(""))
 from final_dataset.FinalDataSet import FinalDataSet
 
 class Normalize():

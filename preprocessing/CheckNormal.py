@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
 from scipy import stats
+import sys
+import os
+sys.path.append(os.path.abspath(""))
 
 class CheckNormal():
     def __init__(self):

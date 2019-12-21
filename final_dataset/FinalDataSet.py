@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
 import sys
-import sys
 import concurrent.futures
 import gc
 sys.path.append('../')
+import os
+sys.path.append(os.path.abspath(""))
 
 class FinalDataSet():
     def __init__(self):
@@ -16,8 +17,8 @@ class FinalDataSet():
             "final_dataset/combined_matrix_final_5.csv",
         ]
         self._clinical_file = "final_dataset/combined_clinical_final.csv"
-        self.make_series_matrix()
-        # self.thread_make_series_matrix()
+        # self.make_series_matrix()
+        self.thread_make_series_matrix()
         self.make_clinical()
 
         
@@ -26,9 +27,12 @@ class FinalDataSet():
         with concurrent.futures.ThreadPoolExecutor() as executor:
             future_to_url = {executor.submit(pd.read_csv, fn): fn for fn in self._series_files}
             for future in concurrent.futures.as_completed(future_to_url):
-                df_list.append(future_to_url[future])
+                df_list.append(future.result())
         self._series_matrix = pd.concat(df_list,ignore_index=True)[:]
-        self._series_matrix.reindex()
+        cols = list(self._series_matrix.columns)
+        cols[0] = "GEO_ACC"
+        self._series_matrix.columns = cols
+        self._series_matrix = self._series_matrix.set_index("GEO_ACC").T
         gc.collect()
         return self._series_matrix
 
@@ -37,7 +41,11 @@ class FinalDataSet():
         for file_name in self._series_files:
             df_list.append(pd.read_csv(file_name))
         self._series_matrix = pd.concat(df_list,ignore_index=True)[:]
-        self._series_matrix.reindex()
+        cols = list(self._series_matrix.columns)
+        cols[0] = "GEO_ACC"
+        self._series_matrix.columns = cols
+        self._series_matrix = self._series_matrix.set_index("GEO_ACC").T
+        gc.collect()       
         return self._series_matrix
     
     def make_clinical(self):
@@ -65,16 +73,15 @@ class FinalDataSet():
         return self._clinical
     
     @property
-    def sample_values_array(self):
-        return self.series_matrix[self.sample_columns].to_numpy()
+    def series_matrix_array(self):
+        return self.series_matrix.to_numpy()
     
     @property
-    def sample_columns(self):
-        return list(self.series_matrix.columns)[1:]
+    def sample_list(self):
+        return list(self.series_matrix.index)
     
     @property
     def id_ref(self):
-        return list(self.series_matrix["ID_REF"])
-
+        return list(self.series_matrix.columns)
 f = FinalDataSet()
-print(f.series_matrix.shape)
+print(f.series_matrix_array)

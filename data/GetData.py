@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import sys
 sys.path.append('../')
+import os
+sys.path.append(os.path.abspath(""))
 class GetData():
     def __init__(self):
         self._data_summary = "data_summary.csv"
