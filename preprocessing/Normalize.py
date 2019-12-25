@@ -13,4 +13,6 @@ class Normalize():
     
     def get_normalized_data(self):
         f = FinalDataSet()
-        return f.series_matrix
+        series = f.series_matrix.copy()
+        del f
+        return series

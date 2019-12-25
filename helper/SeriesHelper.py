@@ -4,12 +4,15 @@ import time
 import sys
 import os
 sys.path.append(os.path.abspath(""))
-print(sys.path)
-from preprocessing.Normalize import Normalize
 
-def get_id_ref_by_index(self):
-    pass
-def get_relapse_value(self,id_ref : str):
+def get_relapse_value_from_series_matrix(series_matrix : pd.DataFrame):
+    relapse_array = []
+    for geo_acc in list(series_matrix.index):
+        relapse_array.append(get_relapse_value(geo_acc))
+    relapse_array  = np.array(relapse_array)
+    return relapse_array
+        
+def get_relapse_value(id_ref : str):
         clinical_file = "final_dataset/combined_clinical_final.csv"
         clinical = pd.read_csv(clinical_file)
         df = clinical[clinical.ID == id_ref]

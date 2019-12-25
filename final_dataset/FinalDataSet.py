@@ -3,12 +3,16 @@ import numpy as np
 import sys
 import concurrent.futures
 import gc
-sys.path.append('../')
+# sys.path.append('../')
 import os
 sys.path.append(os.path.abspath(""))
 
+import helper.SeriesHelper as series_helper
+# from h.series_helper import get_relapse_value_from_series_matrix
+
 class FinalDataSet():
     def __init__(self):
+        self._series_helper = series_helper
         self._series_files = [
             "final_dataset/combined_matrix_final_1.csv",
             "final_dataset/combined_matrix_final_2.csv",
@@ -20,8 +24,8 @@ class FinalDataSet():
         # self.make_series_matrix()
         self.thread_make_series_matrix()
         self.make_clinical()
+        self._relapse_array = self._series_helper.get_relapse_value_from_series_matrix(self._series_matrix.copy())
 
-        
     def thread_make_series_matrix(self):
         df_list = []
         with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -53,16 +57,7 @@ class FinalDataSet():
         return self.clinical
     
     def get_relapse_value(self,id_ref : str):
-        df = self._clinical[self._clinical.ID == id_ref]
-        if df.shape[0] >1 :
-            print("There are %d relapse value for same ID in clinical data,Please Check",
-            df.shape[0])
-            sys.exit(0)
-        elif df.shape[0] < 1:
-            print("No values present for relapse in the given clinical data")
-            # sys.exit(0)
-        else : 
-            return int(df.iloc[0]["relapse"])
+        self._series_helper.get_relapse_value(id_ref)
 
     @property
     def series_matrix(self):
@@ -83,5 +78,11 @@ class FinalDataSet():
     @property
     def id_ref(self):
         return list(self.series_matrix.columns)
-f = FinalDataSet()
-print(f.series_matrix_array)
+
+    @property
+    def relapse_array(self):
+        return self._relapse_array
+
+# f = FinalDataSet()
+# # print(f.series_matrix)
+# print(f.get_relapse_value(list(f.series_matrix.index)[0]))
