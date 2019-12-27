@@ -83,6 +83,3 @@ class FinalDataSet():
     def relapse_array(self):
         return self._relapse_array
 
-# f = FinalDataSet()
-# # print(f.series_matrix)
-# print(f.get_relapse_value(list(f.series_matrix.index)[0]))
