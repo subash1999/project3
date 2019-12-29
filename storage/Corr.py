@@ -180,6 +180,9 @@ class Corr():
         if(len(rows)>=1):
             return self.rows_to_correlation(rows)
         return False
+    
+    def commit(self):
+        self.conn.commit()
 
     class Correlation():
         
