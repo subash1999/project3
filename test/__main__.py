@@ -3,7 +3,7 @@ sys.path.append(os.path.abspath(""))
 from preprocessing.Normalize import Normalize
 from scipy.stats.stats import pearsonr
 from storage.Corr import Corr
-import helper.SeriesHelper as series_helper
+import helper.SeriesHelper as series_helper 
 import concurrent.futures
 import multiprocessing
 
@@ -29,9 +29,7 @@ def check_repetation(x,y):
     rows = c.check_if_val_pair_exists(x,y,corr_type)
     if rows == False:
         return False
-    for r in rows:
-        c.delete_row(r.id)
-    return False
+    return True
 # /////////////////////////////////////////////////// #
 # /////////////////////////////////////////////////// #
 

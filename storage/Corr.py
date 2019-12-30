@@ -2,6 +2,9 @@ import sqlite3
 import pickle
 import sys
 import traceback
+from numba import jit,vectorize
+
+
 class Corr():    
     def __init__(self):
         self.path = 'storage/'
@@ -46,7 +49,7 @@ class Corr():
         except Exception as e:
             print(e)
             return False
-
+    # @jit
     def add_corr(self,gene_id_1,gene_id_2,value,corr_type):
         try :
             if(self.check_if_table_exists(self.table_name) == False):
@@ -60,7 +63,7 @@ class Corr():
                 )'''.format(table_name=self.table_name,gene_id_1=gene_id_1,gene_id_2=gene_id_2,
                 value=value,corr_type=corr_type)
             self.c.execute(query)
-            self.conn.commit()
+            # self.conn.commit()
             return True
         except Exception as e:
             print(e)
@@ -184,6 +187,7 @@ class Corr():
     def commit(self):
         self.conn.commit()
 
+    # @jitclass()
     class Correlation():
         
         def __init__(self,id=None,gene_id_1 =None,gene_id_2=None,value=None,corr_type=None,created_at=None):
