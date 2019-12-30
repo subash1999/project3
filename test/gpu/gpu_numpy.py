@@ -25,9 +25,10 @@ def check_repetation(x,y):
 # /////////////////////////////////////////////////// #
 
 # @njit      # or @jit(nopython=True)
-# @jit(target ="cuda",parallel=True,fastmath=True)
 # @jit(parallel=True,fastmath=True)
-@jit
+# @jit
+# @jit(parallel=True,fastmath=True)
+@njit(fastmath=True)
 def multithread(x_col,y_col,normal_matrix,t_count): 
     # t1 = time.time()
     # c = Corr()
@@ -198,13 +199,14 @@ if __name__ == '__main__':
     normal_matrix = normal_matrix.to_numpy()
 
     # EXECUTION STARTS HERE
-    gpu_full_serial(normal_matrix,0,1,1)
+#     gpu_full_serial(normal_matrix,0,1,1)
 
-    gpu_thread(normal_matrix,0,1,1)
+#     gpu_thread(normal_matrix,0,1,1)
+    
+    for x in (0,len(normal_matrix[0])*(1/5),50):
+        gpu_process(normal_matrix,x,x+50,10)
 
-    gpu_process(normal_matrix,0,4,4)
-
-    gpu_process_thread(normal_matrix,0,4,4)
+#     gpu_process_thread(normal_matrix,0,4,4)
 
 
 
