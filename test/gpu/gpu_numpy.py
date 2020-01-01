@@ -183,7 +183,7 @@ if __name__ == '__main__':
     tot = time.time()
 
     # MANGE CORRELATION TABLE
-    manage_corr_table()
+    
     
     # NORMAL MATRIX
     normal_time = time.time()
@@ -197,14 +197,14 @@ if __name__ == '__main__':
     matirx_cols = normal_matrix.columns
     index = normal_matrix.index
     normal_matrix = normal_matrix.to_numpy()
-
+    print(len(normal_matrix[0]))
     # EXECUTION STARTS HERE
-#     gpu_full_serial(normal_matrix,0,1,1)
-
+    gpu_full_serial(normal_matrix,0,1,1)
+    manage_corr_table()
 #     gpu_thread(normal_matrix,0,1,1)
-    
-    for x in (0,len(normal_matrix[0])*(1/5),50):
-        gpu_process(normal_matrix,x,x+50,10)
+#     st_mul from 0 to 5 
+    st_mul = 0
+    gpu_process(normal_matrix,0,len(normal_matrix[0]),5)
 
 #     gpu_process_thread(normal_matrix,0,4,4)
 
