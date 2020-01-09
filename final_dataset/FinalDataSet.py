@@ -6,6 +6,7 @@ import gc
 # sys.path.append('../')
 import os
 sys.path.append(os.path.abspath(""))
+sys.path.append(os.path.abspath("../"))
 
 import helper.SeriesHelper as series_helper
 # from h.series_helper import get_relapse_value_from_series_matrix
@@ -21,8 +22,8 @@ class FinalDataSet():
             "final_dataset/combined_matrix_final_5.csv",
         ]
         self._clinical_file = "final_dataset/combined_clinical_final.csv"
-        # self.make_series_matrix()
-        self.thread_make_series_matrix()
+        self.make_series_matrix()
+        # self.thread_make_series_matrix()
         self.make_clinical()
         self._relapse_array = self._series_helper.get_relapse_value_from_series_matrix(self._series_matrix.copy())
 

@@ -3,4 +3,12 @@ data/combined_series_matrix.csv
 data/series_matrix/gse2034_series_matrix_log2.csv
 orange.tab
 data_with_relapse.csv
+correlation.csv
+Correlations.csv
+storage/storage.db
+storage/storage2.db
+storage/storage3.db
+storage/storage4.db
+storage/storage.db
+Correlations.csv
 storage/storage.db
