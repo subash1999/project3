@@ -12,3 +12,5 @@ storage/storage4.db
 storage/storage.db
 Correlations.csv
 storage/storage.db
+*.db
+Correlations.csv
