@@ -3,7 +3,6 @@ import numpy as np
 import sys
 import concurrent.futures
 import gc
-# sys.path.append('../')
 import os
 sys.path.append(os.path.abspath(""))
 sys.path.append(os.path.abspath("../"))
@@ -52,6 +51,13 @@ class FinalDataSet():
         self._series_matrix = self._series_matrix.set_index("GEO_ACC").T
         gc.collect()       
         return self._series_matrix
+
+    def get_train_test_data(self):
+        X_train = pd.read_csv("final_dataset/X_train.csv")
+        X_test = pd.read_csv("final_dataset/X_test.csv")
+        y_train = pd.read_csv("final_dataset/y_train.csv")
+        y_test = pd.read_csv("final_dataset/y_test.csv")
+        return X_train,X_test,y_train,y_test
     
     def make_clinical(self):
         self._clinical  = pd.read_csv(self._clinical_file)

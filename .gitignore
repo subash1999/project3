@@ -14,3 +14,12 @@ Correlations.csv
 storage/storage.db
 *.db
 Correlations.csv
+Correlations.csv
+storage/storage.db
+final_dataset/X_test.csv
+final_dataset/X_train.csv
+final_dataset/y_train.csv
+final_dataset/y_test.csv
+storage/storage.db
+corr_removed_data_with_relapse.csv
+orange/corr_removed_data_with_relapse.csv
